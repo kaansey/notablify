@@ -10,7 +10,12 @@ const initialBoxState = {
   initialH: 0,
 }
 
-const DrawBox = ({ boxRef, style }) => {
+interface DrawBoxProps {
+  boxRef: React.Ref
+  style: any
+}
+
+const DrawBox: React.SFC<DrawBoxProps> = ({ boxRef, style }) => {
   const [rec, setRec] = useState({ x: 0, y: 0 })
   const [boxState, setBoxState] = useState(initialBoxState)
 
@@ -31,8 +36,9 @@ const DrawBox = ({ boxRef, style }) => {
   }
 
   const onMouseDown = e => {
-    setRec(getInitialCoordinates())
     const rect = getInitialCoordinates()
+    setRec(rect)
+
     setBoxState({
       ...boxState,
       isBoxSelecting: true,
