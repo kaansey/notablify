@@ -1,0 +1,5 @@
+.boxStyle{
+    position: 'absolute';
+    cursor: 'default';
+    zIndex: 9000;
+}
