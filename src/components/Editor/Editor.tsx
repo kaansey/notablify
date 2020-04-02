@@ -28,7 +28,6 @@ const Editor: React.SFC<EditorProps> = ({
   console.log({ id })
   return (
     <Rnd
-      key={id}
       style={style}
       default={{
         x,
@@ -43,7 +42,6 @@ const Editor: React.SFC<EditorProps> = ({
     >
       <SimpleMDE
         id={`${id}-mde`}
-        key={`${id}-mde`}
         getMdeInstance={toggleFullScreen}
         // value={this.state.textValue}
         options={{
