@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { BoxStateType } from '../../types'
+import './DrawBox.css'
 
 const initialBoxState = {
   isBoxSelecting: false,
@@ -11,11 +13,12 @@ const initialBoxState = {
 }
 
 interface DrawBoxProps {
-  boxRef: React.Ref
+  boxRef: any
   style: any
+  onBoxCreate: (boxState: BoxStateType) => void
 }
 
-const DrawBox: React.SFC<DrawBoxProps> = ({ boxRef, style }) => {
+const DrawBox: React.SFC<DrawBoxProps> = ({ boxRef, style, onBoxCreate }) => {
   const [rec, setRec] = useState({ x: 0, y: 0 })
   const [boxState, setBoxState] = useState(initialBoxState)
 
@@ -50,6 +53,7 @@ const DrawBox: React.SFC<DrawBoxProps> = ({ boxRef, style }) => {
   }
 
   const onMouseUp = () => {
+    onBoxCreate(boxState)
     setBoxState(initialBoxState)
   }
   const onMouseMove = e => {
