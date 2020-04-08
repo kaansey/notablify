@@ -1,12 +1,22 @@
-.editorTitle {
-  /* position: relative; */
+.editorHeader {
+  display: flex;
+  justify-content: space-between;
   background-color: white;
   height: 20px;
   border: 0px solid #9a9a9a;
   border-bottom-width: 1px;
-  padding: 5px;
-  font-size: 14px;
+  padding: 5px 10px;
   border-radius: 5px 5px 0 0;
+}
+
+.closeIcon {
+  font-family: ArchitectsDaughter;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.closeIcon:hover {
+  color: #960000;
 }
 
 .editorContent {

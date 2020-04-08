@@ -53,7 +53,7 @@ const DrawBox: React.SFC<DrawBoxProps> = ({ boxRef, style, onBoxCreate }) => {
   }
 
   const onMouseUp = () => {
-    if (boxState.boxWidth > 100 && boxState.boxHeight > 100) {
+    if (boxState.boxWidth > 50 && boxState.boxHeight > 50) {
       onBoxCreate(boxState)
     }
 

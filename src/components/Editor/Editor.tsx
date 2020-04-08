@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Rnd } from 'react-rnd'
 import SimpleMDE from 'react-simplemde-editor'
 
 import './Editor.css'
+
+const editorStyle = {
+  border: 'solid 1px #9a9a9a',
+  background: '#f0f0f0',
+  borderRadius: '5px',
+}
 
 interface EditorProps {
   id: string
@@ -10,8 +16,8 @@ interface EditorProps {
   y: number
   width: number
   height: number
-  style: any
   onDragStop: (e: any, d: any) => void
+  onEditorDelete: (id: string) => () => void
 }
 
 const Editor: React.SFC<EditorProps> = ({
@@ -20,19 +26,29 @@ const Editor: React.SFC<EditorProps> = ({
   y,
   width,
   height,
-  style,
   onDragStop,
+  onEditorDelete
 }) => {
+  const [disableDragging, setDisableDragging] = useState(true)
+
   const toggleFullScreen = e => {
     e.toggleFullScreen()
   }
 
   const _height = Math.max(height, 200)
-  const _width = Math.max(width, 300)
+  const _width = Math.max(width, 400)
+
+  const onEdit = () => {
+    setDisableDragging(true)
+  }
+
+  const onEditLeave = () => {
+    setDisableDragging(false)
+  }
 
   return (
     <Rnd
-      style={style}
+      style={editorStyle}
       default={{
         x,
         y,
@@ -41,14 +57,16 @@ const Editor: React.SFC<EditorProps> = ({
       }}
       enableUserSelectHack={false}
       onDragStop={onDragStop}
+      disableDragging={disableDragging}
     >
-      <div className="editorTitle">title</div>
+      <div className="editorHeader">
+        <div>title</div>
+        <div className="closeIcon" onClick={onEditorDelete(id)}>X</div>
+      </div>
       <div
         className="editorContent"
-        onClick={(e: any) => {
-          e.stopPropagation()
-          console.log('here')
-        }}
+        onMouseEnter={onEdit}
+        onMouseLeave={onEditLeave}
       >
         <SimpleMDE
           id={`${id}-mde`}

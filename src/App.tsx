@@ -7,12 +7,6 @@ import { BoxStateType } from './types'
 import './App.css'
 import 'easymde/dist/easymde.min.css'
 
-const style = {
-  border: 'solid 1px #9a9a9a',
-  background: '#f0f0f0',
-  borderRadius: '5px',
-}
-
 const fontStyle = {
   fontFamily: 'ArchitectsDaughter',
 }
@@ -20,32 +14,38 @@ const fontStyle = {
 function App() {
   const drawBoxRef = useRef()
   const [boxStyle, setBoxStyle] = useState(getMaxScreenSize())
-  const [editors, setEditors] = useState([])
+  const [editors, setEditors] = useState({})
 
   const onDragStop = (e: any, d: any) => {
     setBoxStyle(getMaxScreenSize())
   }
 
   const onBoxCreate = (boxState: BoxStateType) => {
-    // editors.push(boxState)
-    setEditors([...editors, { ...boxState, id: nanoid() }])
+    setEditors({ ...editors, [nanoid()]: { ...boxState } })
     console.log(editors)
+  }
+
+  const onEditorDelete = (id: string) => () => {
+    if (id in editors) {
+      delete editors[id]
+      setEditors({ ...editors })
+    }
   }
 
   return (
     <div style={fontStyle}>
       <DrawBox boxRef={drawBoxRef} style={boxStyle} onBoxCreate={onBoxCreate} />
-      {editors.map(e => {
+      {Object.entries(editors).map(([key, value]: any) => {
         return (
           <Editor
-            key={e.id}
-            id={e.id}
-            x={e.boxLeft}
-            y={e.boxTop}
-            width={e.boxWidth}
-            height={e.boxHeight}
+            key={key}
+            id={key}
+            x={value.boxLeft}
+            y={value.boxTop}
+            width={value.boxWidth}
+            height={value.boxHeight}
             onDragStop={onDragStop}
-            style={style}
+            onEditorDelete={onEditorDelete}
           />
         )
       })}
