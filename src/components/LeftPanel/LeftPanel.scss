@@ -1,0 +1,37 @@
+.leftPanel {
+  width: 250px;
+  border: solid 0px #eee;
+  border-left-width: 1px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0px;
+  background-color: white;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
+
+  .title {
+    /* height: 57px; */
+    border: solid 0px #eee;
+    border-bottom-width: 1px;
+    padding: 17px 10px;
+    color: #5f6368;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .closeIcon {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .content {
+    height: calc(100vh - 56px);
+    overflow: auto;
+    padding: 17px 10px;
+  }
+
+  .item {
+  }
+}

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Rnd } from 'react-rnd'
 import SimpleMDE from 'react-simplemde-editor'
 
-import './Editor.css'
+import './Editor.scss'
 
 const editorStyle = {
   border: 'solid 1px #9a9a9a',

@@ -7,16 +7,16 @@
   border-bottom-width: 1px;
   padding: 5px 10px;
   border-radius: 5px 5px 0 0;
-}
 
-.closeIcon {
-  font-family: ArchitectsDaughter;
-  font-weight: bold;
-  cursor: pointer;
-}
+  .closeIcon {
+    font-family: ArchitectsDaughter;
+    font-weight: bold;
+    cursor: pointer;
+  }
 
-.closeIcon:hover {
-  color: #960000;
+  .closeIcon:hover {
+    color: #960000;
+  }
 }
 
 .editorContent {

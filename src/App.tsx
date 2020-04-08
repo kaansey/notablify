@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react'
 import { nanoid } from 'nanoid'
-import { DrawBox, Editor } from './components'
+import { DrawBox, Editor, LeftPanel } from './components'
 import { getMaxScreenSize } from './utils/screenSize'
 import { BoxStateType } from './types'
+import useLocalStorage from './hooks/useLocalStorage'
 
 import './App.css'
 import 'easymde/dist/easymde.min.css'
@@ -14,20 +15,19 @@ const fontStyle = {
 function App() {
   const drawBoxRef = useRef()
   const [boxStyle, setBoxStyle] = useState(getMaxScreenSize())
-  const [editors, setEditors] = useState({})
+  const [editors, setEditors] = useLocalStorage('notes', {})
 
   const onDragStop = (id: string) => (e: any, d: any) => {
     setBoxStyle(getMaxScreenSize())
 
     // set new cordinates
-    editors[id].boxLeft = d.y
-    editors[id].boxTop = d.x
+    editors[id].boxLeft = d.x
+    editors[id].boxTop = d.y
     setEditors({ ...editors })
   }
 
   const onBoxCreate = (boxState: BoxStateType) => {
     setEditors({ ...editors, [nanoid()]: { ...boxState } })
-    console.log(editors)
   }
 
   const onEditorDelete = (id: string) => () => {
@@ -39,6 +39,7 @@ function App() {
 
   return (
     <div className="app" style={fontStyle}>
+      <LeftPanel />
       <DrawBox boxRef={drawBoxRef} style={boxStyle} onBoxCreate={onBoxCreate} />
       {Object.entries(editors).map(([key, value]: any) => {
         return (
