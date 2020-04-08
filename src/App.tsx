@@ -8,8 +8,13 @@ import './App.css'
 import 'easymde/dist/easymde.min.css'
 
 const style = {
-  border: 'solid 1px #ddd',
+  border: 'solid 1px #9a9a9a',
   background: '#f0f0f0',
+  borderRadius: '5px',
+}
+
+const fontStyle = {
+  fontFamily: 'ArchitectsDaughter',
 }
 
 function App() {
@@ -24,10 +29,11 @@ function App() {
   const onBoxCreate = (boxState: BoxStateType) => {
     // editors.push(boxState)
     setEditors([...editors, { ...boxState, id: nanoid() }])
+    console.log(editors)
   }
 
   return (
-    <div>
+    <div style={fontStyle}>
       <DrawBox boxRef={drawBoxRef} style={boxStyle} onBoxCreate={onBoxCreate} />
       {editors.map(e => {
         return (

@@ -53,11 +53,16 @@ const DrawBox: React.SFC<DrawBoxProps> = ({ boxRef, style, onBoxCreate }) => {
   }
 
   const onMouseUp = () => {
-    onBoxCreate(boxState)
+    if (boxState.boxWidth > 100 && boxState.boxHeight > 100) {
+      onBoxCreate(boxState)
+    }
+
     setBoxState(initialBoxState)
   }
+  
   const onMouseMove = e => {
     if (!boxState.isBoxSelecting) return
+
     setBoxState({
       ...boxState,
       boxWidth: Math.abs(boxState.initialW - e.pageX + rec.x),

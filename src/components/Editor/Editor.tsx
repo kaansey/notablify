@@ -2,6 +2,8 @@ import React from 'react'
 import { Rnd } from 'react-rnd'
 import SimpleMDE from 'react-simplemde-editor'
 
+import './Editor.css'
+
 interface EditorProps {
   id: string
   x: number
@@ -25,31 +27,54 @@ const Editor: React.SFC<EditorProps> = ({
     e.toggleFullScreen()
   }
 
-  console.log({ id })
+  const _height = Math.max(height, 200)
+  const _width = Math.max(width, 300)
+
   return (
     <Rnd
       style={style}
       default={{
         x,
         y,
-        width,
-        height,
+        width: _width,
+        height: _height,
       }}
-      // minHeight={300}
-      // minWidth={300}
       enableUserSelectHack={false}
       onDragStop={onDragStop}
     >
-      <SimpleMDE
-        id={`${id}-mde`}
-        getMdeInstance={toggleFullScreen}
-        // value={this.state.textValue}
-        options={{
-          minHeight: '200px',
-          //   autofocus: true,
-          spellChecker: false,
+      <div className="editorTitle">title</div>
+      <div
+        className="editorContent"
+        onClick={(e: any) => {
+          e.stopPropagation()
+          console.log('here')
         }}
-      />
+      >
+        <SimpleMDE
+          id={`${id}-mde`}
+          getMdeInstance={toggleFullScreen}
+          options={{
+            minHeight: '200px',
+            spellChecker: false,
+            toolbar: [
+              'bold',
+              'italic',
+              'strikethrough',
+              'heading',
+              '|',
+              'code',
+              'quote',
+              'unordered-list',
+              'ordered-list',
+              '|',
+              'table',
+              '|',
+              'preview',
+              'guide',
+            ],
+          }}
+        />
+      </div>
     </Rnd>
   )
 }
