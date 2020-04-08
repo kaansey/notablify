@@ -16,7 +16,7 @@ interface EditorProps {
   y: number
   width: number
   height: number
-  onDragStop: (e: any, d: any) => void
+  onDragStop: (id: string) => (e: any, d: any) => void
   onEditorDelete: (id: string) => () => void
 }
 
@@ -27,7 +27,7 @@ const Editor: React.SFC<EditorProps> = ({
   width,
   height,
   onDragStop,
-  onEditorDelete
+  onEditorDelete,
 }) => {
   const [disableDragging, setDisableDragging] = useState(true)
 
@@ -56,12 +56,14 @@ const Editor: React.SFC<EditorProps> = ({
         height: _height,
       }}
       enableUserSelectHack={false}
-      onDragStop={onDragStop}
+      onDragStop={onDragStop(id)}
       disableDragging={disableDragging}
     >
       <div className="editorHeader">
         <div>title</div>
-        <div className="closeIcon" onClick={onEditorDelete(id)}>X</div>
+        <div className="closeIcon" onClick={onEditorDelete(id)}>
+          X
+        </div>
       </div>
       <div
         className="editorContent"

@@ -16,8 +16,13 @@ function App() {
   const [boxStyle, setBoxStyle] = useState(getMaxScreenSize())
   const [editors, setEditors] = useState({})
 
-  const onDragStop = (e: any, d: any) => {
+  const onDragStop = (id: string) => (e: any, d: any) => {
     setBoxStyle(getMaxScreenSize())
+
+    // set new cordinates
+    editors[id].boxLeft = d.y
+    editors[id].boxTop = d.x
+    setEditors({ ...editors })
   }
 
   const onBoxCreate = (boxState: BoxStateType) => {
@@ -33,7 +38,7 @@ function App() {
   }
 
   return (
-    <div style={fontStyle}>
+    <div className="app" style={fontStyle}>
       <DrawBox boxRef={drawBoxRef} style={boxStyle} onBoxCreate={onBoxCreate} />
       {Object.entries(editors).map(([key, value]: any) => {
         return (

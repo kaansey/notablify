@@ -1,3 +1,7 @@
+html {
+  overflow: initial !important;
+}
+
 @font-face {
   font-family: ArchitectsDaughter;
   src: url(./assets/fonts/ArchitectsDaughter.ttf);
@@ -15,6 +19,7 @@ body {
     repeat;
   background-color: #fbfbfb;
   font-size: 14px;
+  overflow: initial !important;
 }
 
 code {

@@ -78,10 +78,9 @@ const DrawBox: React.SFC<DrawBoxProps> = ({ boxRef, style, onBoxCreate }) => {
     width: boxState.boxWidth,
     height: boxState.boxHeight,
   }
-
+  
   return (
     <div
-      className="boxWrapper"
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseMove={onMouseMove}
