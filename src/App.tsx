@@ -28,6 +28,13 @@ function App() {
     setNotes({ ...notes })
   }
 
+  const onResizeStop = (id: string) => (e: any, d: any, ref: any) => {
+    console.log(notes[id], ref.style.width, ref.style)
+    notes[id].boxWidth = Number(ref.style.width.replace('px', ''))
+    notes[id].boxHeight = Number(ref.style.height.replace('px', ''))
+    setNotes({ ...notes })
+  }
+
   const onBoxCreate = (boxState: BoxStateType) => {
     setNotes({ ...notes, [nanoid()]: { ...boxState, title: 'Note' } })
   }
@@ -39,7 +46,7 @@ function App() {
     }
   }
 
-  const onTitleChange = (id: string) => (e) => {
+  const onTitleChange = (id: string) => e => {
     notes[id].title = e.target.value
     setNotes({ ...notes })
   }
@@ -60,6 +67,7 @@ function App() {
             title={value.title}
             onTitleChange={onTitleChange}
             onDragStop={onDragStop}
+            onResizeStop={onResizeStop}
             onEditorDelete={onDeleteNote}
           />
         )

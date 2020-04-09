@@ -19,6 +19,7 @@ interface EditorProps {
   title?: string
   onTitleChange: (id: string) => (e: any) => void
   onDragStop: (id: string) => (e: any, d: any) => void
+  onResizeStop: (id: string) => (e: any, d: any, ref: any) => void
   onEditorDelete: (id: string) => () => void
 }
 
@@ -31,6 +32,7 @@ const Editor: React.SFC<EditorProps> = ({
   title,
   onTitleChange,
   onDragStop,
+  onResizeStop,
   onEditorDelete,
 }) => {
   const [disableDragging, setDisableDragging] = useState(true)
@@ -40,7 +42,7 @@ const Editor: React.SFC<EditorProps> = ({
   }
 
   const _height = Math.max(height, 200)
-  const _width = Math.max(width, 400)
+  const _width = Math.max(width, 200)
 
   const onEdit = () => {
     setDisableDragging(true)
@@ -61,6 +63,7 @@ const Editor: React.SFC<EditorProps> = ({
       }}
       enableUserSelectHack={false}
       onDragStop={onDragStop(id)}
+      onResizeStop={onResizeStop(id)}
       disableDragging={disableDragging}
     >
       <div className="editorHeader">
