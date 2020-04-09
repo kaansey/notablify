@@ -1,7 +1,14 @@
 import React, { useState, useRef } from 'react'
 import { nanoid } from 'nanoid'
 
-import { DrawBox, Editor, LeftPanel, FontStyle, Github } from './components'
+import {
+  DrawBox,
+  Editor,
+  LeftPanel,
+  FontStyle,
+  Github,
+  Tutorial,
+} from './components'
 import { getMaxScreenSize } from './utils/screenSize'
 import { BoxStateType } from './types'
 import useLocalStorage from './hooks/useLocalStorage'
@@ -53,6 +60,7 @@ function App() {
 
   return (
     <div className="app" style={fontStyle}>
+      <Tutorial />
       <Github />
       <FontStyle />
       <LeftPanel onDeleteNote={onDeleteNote} />
