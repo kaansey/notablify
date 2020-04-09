@@ -28,6 +28,34 @@
     height: calc(100vh - 56px);
     overflow: auto;
     padding: 17px 10px;
+
+    .deleteAll {
+      margin-bottom: 20px;
+      text-align: right;
+      cursor: pointer;
+
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    .verticalText {
+      margin: auto;
+      width: 12px;
+      word-wrap: break-word;
+    }
+
+    .nothingFound{
+      width: 110px;
+      margin: auto;
+      margin-top:50px;
+      color: #5f6368;
+
+      .searchIcon{
+        margin: auto;
+        width: 50px;
+      }
+    }
   }
 
   .item {

@@ -1,23 +1,23 @@
 import React, { useState, useRef } from 'react'
 import { nanoid } from 'nanoid'
 
-import { DrawBox, Editor, LeftPanel } from './components'
+import { DrawBox, Editor, LeftPanel, FontStyle, Github } from './components'
 import { getMaxScreenSize } from './utils/screenSize'
 import { BoxStateType } from './types'
 import useLocalStorage from './hooks/useLocalStorage'
-import { LS_NOTES_KEY } from './constants'
+import { LS_NOTES_KEY, LS_FONT_FAMILY } from './constants'
 
 import './App.scss'
 import 'easymde/dist/easymde.min.css'
-
-const fontStyle = {
-  fontFamily: 'ArchitectsDaughter',
-}
 
 function App() {
   const drawBoxRef = useRef()
   const [boxStyle, setBoxStyle] = useState(getMaxScreenSize())
   const [notes, setNotes] = useLocalStorage(LS_NOTES_KEY, {})
+  const [fontStyle] = useLocalStorage(LS_FONT_FAMILY, {
+    fontFamily: 'ArchitectsDaughter',
+    fontSize: '14px',
+  })
 
   const onDragStop = (id: string) => (e: any, d: any) => {
     setBoxStyle(getMaxScreenSize())
@@ -42,7 +42,6 @@ function App() {
     if (id in notes) {
       delete notes[id]
       setNotes({ ...notes })
-      // console.log(localStorage.getItem(`smde_${id}-mde`))
       localStorage.removeItem(`${id}-mde`)
     }
   }
@@ -54,6 +53,8 @@ function App() {
 
   return (
     <div className="app" style={fontStyle}>
+      <Github />
+      <FontStyle />
       <LeftPanel onDeleteNote={onDeleteNote} />
       <DrawBox boxRef={drawBoxRef} style={boxStyle} onBoxCreate={onBoxCreate} />
       {Object.entries(notes).map(([key, value]: any) => {
