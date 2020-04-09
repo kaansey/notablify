@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Rnd } from 'react-rnd'
 import SimpleMDE from 'react-simplemde-editor'
+import useLocalStorage from '../../hooks/useLocalStorage'
 
 import './Editor.scss'
 
@@ -36,6 +37,7 @@ const Editor: React.SFC<EditorProps> = ({
   onEditorDelete,
 }) => {
   const [disableDragging, setDisableDragging] = useState(true)
+  const [note, setNote] = useLocalStorage(id + '-mde', '')
 
   const toggleFullScreen = e => {
     e.toggleFullScreen()
@@ -80,6 +82,8 @@ const Editor: React.SFC<EditorProps> = ({
         <SimpleMDE
           id={`${id}-mde`}
           getMdeInstance={toggleFullScreen}
+          onChange={setNote}
+          value={note}
           options={{
             minHeight: '200px',
             spellChecker: false,

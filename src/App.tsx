@@ -29,20 +29,21 @@ function App() {
   }
 
   const onResizeStop = (id: string) => (e: any, d: any, ref: any) => {
-    console.log(notes[id], ref.style.width, ref.style)
     notes[id].boxWidth = Number(ref.style.width.replace('px', ''))
     notes[id].boxHeight = Number(ref.style.height.replace('px', ''))
     setNotes({ ...notes })
   }
 
   const onBoxCreate = (boxState: BoxStateType) => {
-    setNotes({ ...notes, [nanoid()]: { ...boxState, title: 'Note' } })
+    setNotes({ ...notes, [nanoid()]: { ...boxState, title: 'Note title...' } })
   }
 
   const onDeleteNote = (id: string) => () => {
     if (id in notes) {
       delete notes[id]
       setNotes({ ...notes })
+      // console.log(localStorage.getItem(`smde_${id}-mde`))
+      localStorage.removeItem(`${id}-mde`)
     }
   }
 
