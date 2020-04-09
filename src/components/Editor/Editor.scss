@@ -17,6 +17,12 @@
   .closeIcon:hover {
     color: #960000;
   }
+
+  input {
+    font-family: inherit;
+    border-width: 0;
+    width: 40%;
+  }
 }
 
 .editorContent {

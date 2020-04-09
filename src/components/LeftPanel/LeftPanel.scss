@@ -1,5 +1,5 @@
 .leftPanel {
-  width: 200px;
+  width: 250px;
   border: solid 0px #eee;
   border-left-width: 1px;
   position: fixed;
@@ -35,11 +35,11 @@
     justify-content: space-between;
     padding: 10px 0;
     cursor: pointer;
-    border: 0px solid white;
+    border: 0px solid #ececec;
     border-bottom-width: 1px;
 
     .name {
-      max-width: 140px;
+      max-width: 190px;
       word-break: break-all;
     }
 

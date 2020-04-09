@@ -16,6 +16,8 @@ interface EditorProps {
   y: number
   width: number
   height: number
+  title?: string
+  onTitleChange: (id: string) => (e: any) => void
   onDragStop: (id: string) => (e: any, d: any) => void
   onEditorDelete: (id: string) => () => void
 }
@@ -26,6 +28,8 @@ const Editor: React.SFC<EditorProps> = ({
   y,
   width,
   height,
+  title,
+  onTitleChange,
   onDragStop,
   onEditorDelete,
 }) => {
@@ -60,7 +64,7 @@ const Editor: React.SFC<EditorProps> = ({
       disableDragging={disableDragging}
     >
       <div className="editorHeader">
-        <div>title</div>
+        <input onChange={onTitleChange(id)} value={title} />
         <div className="closeIcon" onClick={onEditorDelete(id)}>
           X
         </div>

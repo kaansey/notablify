@@ -44,7 +44,7 @@ const LeftMenu: React.SFC<LeftMenuProps> = ({ onDeleteNote }) => {
                   className="name"
                   onClick={scrollTo(value.boxLeft, value.boxTop)}
                 >
-                  {key}
+                  {value.title}
                 </div>
                 <div className="deleteIcon" onClick={onDeleteNote(key)}>
                   <img alt="delete" src={deleteIcon} />

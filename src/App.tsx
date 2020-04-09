@@ -29,7 +29,7 @@ function App() {
   }
 
   const onBoxCreate = (boxState: BoxStateType) => {
-    setNotes({ ...notes, [nanoid()]: { ...boxState } })
+    setNotes({ ...notes, [nanoid()]: { ...boxState, title: 'Note' } })
   }
 
   const onDeleteNote = (id: string) => () => {
@@ -37,6 +37,11 @@ function App() {
       delete notes[id]
       setNotes({ ...notes })
     }
+  }
+
+  const onTitleChange = (id: string) => (e) => {
+    notes[id].title = e.target.value
+    setNotes({ ...notes })
   }
 
   return (
@@ -52,6 +57,8 @@ function App() {
             y={value.boxTop}
             width={value.boxWidth}
             height={value.boxHeight}
+            title={value.title}
+            onTitleChange={onTitleChange}
             onDragStop={onDragStop}
             onEditorDelete={onDeleteNote}
           />
