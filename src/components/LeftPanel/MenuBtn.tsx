@@ -3,13 +3,12 @@ import cx from 'classnames'
 
 import './MenuBtn.scss'
 
-const MenuBtn = ({
-  isOpen,
-  onClick,
-}: {
+interface MenuBtnProps {
   isOpen: Boolean
-  onClick: () => void
-}) => {
+  onClick(): void
+}
+
+const MenuBtn: React.SFC<MenuBtnProps> = ({ isOpen, onClick }) => {
   return (
     <div className={cx('menuBtn', { open: isOpen })} onClick={onClick}>
       <span></span>

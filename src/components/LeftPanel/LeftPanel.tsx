@@ -3,16 +3,29 @@ import cx from 'classnames'
 
 import useLocalStorage from '../../hooks/useLocalStorage'
 import { LS_NOTES_KEY } from '../../constants'
+import deleteIcon from '../../assets/images/delete.svg'
 import MenuBtn from './MenuBtn'
 
 import './LeftPanel.scss'
 
-const LeftMenu = ({ onDeleteNote }) => {
+interface LeftMenuProps {
+  onDeleteNote(id: string): () => void
+}
+
+const LeftMenu: React.SFC<LeftMenuProps> = ({ onDeleteNote }) => {
   const [notes] = useLocalStorage(LS_NOTES_KEY, {})
   const [isOpen, setIsOpen] = useState(true)
 
   const onMenuBtnClick = () => {
     setIsOpen(!isOpen)
+  }
+
+  const scrollTo = (x: number, y: number) => () => {
+    window.scrollTo({
+      top: y - window.innerHeight / 2,
+      left: x - window.innerWidth / 2,
+      behavior: 'smooth',
+    })
   }
 
   return (
@@ -24,12 +37,17 @@ const LeftMenu = ({ onDeleteNote }) => {
       </div>
       {isOpen && (
         <div className="content">
-          {Object.entries(notes).map(([key]: any) => {
+          {Object.entries(notes).map(([key, value]: any) => {
             return (
-              <div className="item">
-                <div className="name">{key}</div>
+              <div key={key} className="item">
+                <div
+                  className="name"
+                  onClick={scrollTo(value.boxLeft, value.boxTop)}
+                >
+                  {key}
+                </div>
                 <div className="deleteIcon" onClick={onDeleteNote(key)}>
-                  x
+                  <img alt="delete" src={deleteIcon} />
                 </div>
               </div>
             )

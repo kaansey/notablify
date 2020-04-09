@@ -1,12 +1,13 @@
 import React, { useState, useRef } from 'react'
 import { nanoid } from 'nanoid'
+
 import { DrawBox, Editor, LeftPanel } from './components'
 import { getMaxScreenSize } from './utils/screenSize'
 import { BoxStateType } from './types'
 import useLocalStorage from './hooks/useLocalStorage'
 import { LS_NOTES_KEY } from './constants'
 
-import './App.css'
+import './App.scss'
 import 'easymde/dist/easymde.min.css'
 
 const fontStyle = {
