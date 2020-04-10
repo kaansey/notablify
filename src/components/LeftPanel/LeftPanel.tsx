@@ -75,7 +75,6 @@ const LeftMenu: React.SFC<LeftMenuProps> = ({ onDeleteNote }) => {
                   </div>
                 )
               })}
-              )
             </div>
           )
         ) : (

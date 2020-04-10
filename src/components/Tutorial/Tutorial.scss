@@ -21,7 +21,7 @@
   outline: 0;
 
   .modal {
-    width: 500px;
+    width: 600px;
     transform-origin: 507px 63px;
     box-sizing: border-box;
     list-style: none;
@@ -42,17 +42,37 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       cursor: default;
 
-      .skipBtn {
+      .closeBtn {
         position: absolute;
-        top: 10px;
-        right: 10px;
+        right: 30px;
         cursor: pointer;
-        text-decoration: underline;
         font-size: 12px;
         font-weight: bold;
       }
+
+      .skipBtn {
+        bottom: 20px;
+        text-decoration: underline;
+      }
+
+      .closeIcon {
+        font-family: ArchitectsDaughter;
+        right: 10px;
+        top: 10px;
+        font-weight: bold;
+      }
+
+      .tutorial {
+        margin: 20px 0 0 10px;
+      }
+
       .skipBtn:hover {
         color: #005796;
+      }
+
+      img {
+        margin-top: 10px;
+        width: 550px;
       }
     }
   }

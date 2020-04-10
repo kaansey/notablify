@@ -6,7 +6,7 @@ import './Github.scss'
 const Github = () => {
   return (
     <div className="github">
-      <a href="/#"><img alt="github" src={githubIcon} /></a>
+      <a href="https://github.com/kaansey/notabilify"><img alt="github" src={githubIcon} /></a>
     </div>
   )
 }
