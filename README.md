@@ -1,8 +1,8 @@
-### Notabilify
+### Notablify
 
 Tiny note-taking application by using browser storage
 
 ## Demo
-https://notabilify.com/
+https://notablify.com/
 
-![demo](https://github.com/kaansey/notabilify/raw/master/src/assets/demo.gif)
+![demo](https://github.com/kaansey/notablify/raw/master/src/assets/demo.gif)
