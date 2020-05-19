@@ -26,6 +26,7 @@ function App() {
     fontSize: '14px',
     backgroundColor: '#fbfbfb',
   })
+  document.body.style.backgroundColor = fontStyle.backgroundColor
 
   const onDragStop = (id: string) => (e: any, d: any) => {
     setBoxStyle(getMaxScreenSize())

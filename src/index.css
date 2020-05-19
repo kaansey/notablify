@@ -15,6 +15,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 14px;
   overflow: initial !important;
+  background-color: #fbfbfb;
 }
 
 code {

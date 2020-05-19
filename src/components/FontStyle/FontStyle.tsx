@@ -56,6 +56,8 @@ const FontStyle = () => {
       ...fontStyle,
       backgroundColor: color.hex,
     })
+    
+    document.body.style.backgroundColor = color.hex
   }
 
   const handleColorPickerClick = () => {
@@ -92,7 +94,9 @@ const FontStyle = () => {
         </select>
       </div>
       <div className="item">
-        <button onClick={handleColorPickerClick}>Change Background Color</button>
+        <button onClick={handleColorPickerClick}>
+          Change Background Color
+        </button>
         <span> {fontStyle.backgroundColor}</span>
         {displayColorPicker ? (
           <div className="colorPicker">
