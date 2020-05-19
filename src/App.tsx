@@ -24,6 +24,7 @@ function App() {
   const [fontStyle] = useLocalStorage(LS_FONT_FAMILY, {
     fontFamily: 'ArchitectsDaughter',
     fontSize: '14px',
+    backgroundColor: '#fbfbfb',
   })
 
   const onDragStop = (id: string) => (e: any, d: any) => {

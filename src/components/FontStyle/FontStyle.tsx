@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { ChromePicker } from 'react-color'
+
 import useLocalStorage from '../../hooks/useLocalStorage'
 import { LS_FONT_FAMILY } from '../../constants'
 
@@ -28,9 +30,11 @@ const FONT_SIZE = {
 }
 
 const FontStyle = () => {
+  const [displayColorPicker, setDisplayColorPicker] = useState(false)
   const [fontStyle, setFontStyle] = useLocalStorage(LS_FONT_FAMILY, {
     fontFamily: 'ArchitectsDaughter',
     fontSize: '14px',
+    backgroundColor: '#fbfbfb',
   })
 
   const onFontFamilyChange = e => {
@@ -45,6 +49,17 @@ const FontStyle = () => {
       ...fontStyle,
       fontSize: e.target.value,
     })
+  }
+
+  const handleBGColorChange = color => {
+    setFontStyle({
+      ...fontStyle,
+      backgroundColor: color.hex,
+    })
+  }
+
+  const handleColorPickerClick = () => {
+    setDisplayColorPicker(!displayColorPicker)
   }
 
   return (
@@ -75,6 +90,18 @@ const FontStyle = () => {
             )
           })}
         </select>
+      </div>
+      <div className="item">
+        <button onClick={handleColorPickerClick}>Change Background Color</button>
+        <span> {fontStyle.backgroundColor}</span>
+        {displayColorPicker ? (
+          <div className="colorPicker">
+            <ChromePicker
+              color={fontStyle.backgroundColor}
+              onChange={handleBGColorChange}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   )

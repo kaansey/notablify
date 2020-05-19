@@ -13,11 +13,6 @@ body {
   letter-spacing: 0.5px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(
-    data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIElEQVQoU2NkYGDwZWBg2MxAADASUgCTH1WIN6SIDh4AnawBC6pKGAIAAAAASUVORK5CYII=
-   )
-    repeat;
-  background-color: #fbfbfb;
   font-size: 14px;
   overflow: initial !important;
 }

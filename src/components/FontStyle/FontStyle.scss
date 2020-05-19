@@ -21,4 +21,10 @@
       margin-left: 10px;
     }
   }
+
+  .colorPicker {
+    position: absolute;
+    z-index: 2;
+    margin-top: 20px;
+  }
 }
