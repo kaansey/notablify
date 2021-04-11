@@ -2,7 +2,7 @@
 
 Tiny note-taking application by using browser storage
 
-https://notablify.com/
+https://notablify.vercel.app/
 
 chrome-extension: https://chrome.google.com/webstore/detail/notablify/mmbfjafmghpgoeckldndbpkfdlmlanlp
 
